@@ -241,7 +241,7 @@ ref.read(requestSequenceProvider).add(id);
 - Root settings live in shared preferences through `lib/services/shared_preferences_services.dart`.
 - Desktop workspaces use a user-selected Hive directory. Mobile uses `Hive.initFlutter()`.
 - `CollectionStateNotifier.saveData()` controls whether responses are stored, based on `SettingsModel.saveResponses`.
-- Branch-only (`resolve-issue-clear-data-scope`): Settings → Clear Data removes requests through `HiveHandler.clear()` and preserves environments, history, Dashbot data, and shared preferences.
+- Settings → Clear Data removes requests only (`apidash-data`). Environments, history, Dashbot data, and shared preferences are preserved.
 
 Hive boxes:
 

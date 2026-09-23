@@ -33,8 +33,6 @@ void main() {
     await environments.saveEnvironments();
     await hiveHandler.setHistoryIds(['history']);
     await hiveHandler.saveDashbotMessages('saved conversation');
-    final savedEnvironment = hiveHandler.getEnvironment(kGlobalEnvironmentId);
-    expect(savedEnvironment, isNotNull);
 
     expect(hiveHandler.getIds(), isNotEmpty);
 
@@ -44,7 +42,13 @@ void main() {
     expect(container.read(requestSequenceProvider), isEmpty);
     expect(hiveHandler.getIds(), isNull);
     expect(hiveHandler.getEnvironmentIds(), contains(kGlobalEnvironmentId));
-    expect(hiveHandler.getEnvironment(kGlobalEnvironmentId), savedEnvironment);
+    final savedEnvironment = EnvironmentModel.fromJson(
+      Map<String, Object?>.from(
+        hiveHandler.getEnvironment(kGlobalEnvironmentId),
+      ),
+    );
+    expect(savedEnvironment.values.single.key, 'baseUrl');
+    expect(savedEnvironment.values.single.value, 'https://example.com');
     expect(hiveHandler.getHistoryIds(), ['history']);
     expect(await hiveHandler.getDashbotMessages(), 'saved conversation');
     expect(
