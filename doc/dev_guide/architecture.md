@@ -152,7 +152,7 @@ API Dash uses Hive, a lightweight NoSQL database optimized for Flutter.
 | `apidash-history-lazy` | Lazy | Full history request data (loaded on demand) |
 | `apidash-dashbot-data` | Lazy | Dashbot AI conversation data |
 
-Settings → Clear Data clears `apidash-data` and request state, preserving other Hive boxes and shared preferences.
+Settings → Clear Data clears every Hive box and shared preferences, then resets the corresponding live providers. It keeps the active workspace path in memory until restart so the open Hive boxes remain usable.
 
 ### HiveHandler API
 

@@ -8,6 +8,8 @@ import 'package:flutter_riverpod/legacy.dart';
 import 'package:apidash/consts.dart';
 import 'package:apidash/services/connection_manager.dart';
 import 'package:apidash/services/grpc_reflection_service.dart';
+import 'package:apidash/dashbot/providers/chat_viewmodel.dart';
+import 'package:apidash/dashbot/providers/dashbot_active_route_provider.dart';
 import 'package:apidash/utils/grpc_utils.dart';
 import 'package:apidash/terminal/terminal.dart';
 import 'providers.dart';
@@ -1677,12 +1679,23 @@ class CollectionStateNotifier
 
   Future<void> clearData() async {
     ref.read(clearDataStateProvider.notifier).state = true;
-    ref.read(selectedIdStateProvider.notifier).state = null;
     await hiveHandler.clear();
-    ref.read(clearDataStateProvider.notifier).state = false;
+    await clearSharedPrefs();
+    ref.read(selectedIdStateProvider.notifier).state = null;
     ref.read(requestSequenceProvider.notifier).state = [];
     state = {};
-    unsave();
+    ref.read(environmentsStateNotifierProvider.notifier).clearEnvironments();
+    ref.read(selectedHistoryIdStateProvider.notifier).state = null;
+    ref.read(selectedHistoryRequestModelProvider.notifier).state = null;
+    ref.invalidate(historyMetaStateNotifier);
+    ref.invalidate(chatViewmodelProvider);
+    ref.invalidate(dashbotActiveRouteProvider);
+    ref.read(terminalStateProvider.notifier).clear();
+    ref.read(showTerminalBadgeProvider.notifier).state = false;
+    ref.read(settingsProvider.notifier).reset();
+    ref.read(hasUnsavedChangesProvider.notifier).state = false;
+    ref.read(clearDataStateProvider.notifier).state = false;
+    ref.read(userOnboardedProvider.notifier).state = false;
   }
 
   bool loadData() {

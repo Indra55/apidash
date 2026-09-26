@@ -545,14 +545,14 @@ const kLabelExportDataSubtitle =
     "Export your collection to HAR (HTTP Archive format).\nVersion control this file or import in other API clients.";
 const kLabelExport = "Export";
 const kLabelClearData = "Clear Data";
-const kLabelClearDataSubtitle = "Delete all requests data from the disk";
+const kLabelClearDataSubtitle = "Delete all app data from the disk";
 const kMsgClearDataConfirmation =
-    "This action will clear all the requests data from the disk and is irreversible. Do you want to proceed?";
+    "This action will clear all app data from the disk and is irreversible. Do you want to proceed?";
 const kLabelYes = "Yes";
 const kLabelClear = "Clear";
 const kLabelAboutSubtitle =
     "Release Details, Support Channel, Report Bug / Request New Feature";
-const kMsgRequestsDataCleared = "Requests Data Cleared";
+const kMsgAllDataCleared = "All Data Cleared";
 const kLabelCurrentSelectionPrefix = "Current selection: ";
 const kLabelDarkMode = "Dark Mode";
 const kLabelLightMode = "Light mode";

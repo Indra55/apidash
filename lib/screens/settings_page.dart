@@ -272,7 +272,7 @@ class SettingsPage extends ConsumerWidget {
 
                                   sm.hideCurrentSnackBar();
                                   sm.showSnackBar(
-                                    getSnackBar(kMsgRequestsDataCleared),
+                                    getSnackBar(kMsgAllDataCleared),
                                   );
                                 },
                                 child: Text(

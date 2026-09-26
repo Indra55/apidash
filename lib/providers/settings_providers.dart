@@ -25,6 +25,10 @@ class ThemeStateNotifier extends StateNotifier<SettingsModel> {
   }
   final SettingsModel? settingsModel;
 
+  void reset() {
+    state = SettingsModel(workspaceFolderPath: state.workspaceFolderPath);
+  }
+
   Future<void> update({
     bool? isDark,
     bool? alwaysShowCollectionPaneScrollbar,

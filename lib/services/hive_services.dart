@@ -170,6 +170,10 @@ class HiveHandler {
 
   Future clear() async {
     await dataBox.clear();
+    await environmentBox.clear();
+    await historyMetaBox.clear();
+    await historyLazyBox.clear();
+    await dashBotBox.clear();
   }
 
   Future<void> removeUnused() async {

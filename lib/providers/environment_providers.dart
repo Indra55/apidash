@@ -107,6 +107,16 @@ class EnvironmentsStateNotifier
     }
   }
 
+  void clearEnvironments() {
+    loadEnvironments();
+    ref.read(environmentSequenceProvider.notifier).state = [
+      kGlobalEnvironmentId,
+    ];
+    ref.read(selectedEnvironmentIdStateProvider.notifier).state =
+        kGlobalEnvironmentId;
+    ref.read(activeEnvironmentIdStateProvider.notifier).state = null;
+  }
+
   void addEnvironment() {
     final id = getNewUuid();
     final newEnvironmentModel = EnvironmentModel(id: id, values: []);
